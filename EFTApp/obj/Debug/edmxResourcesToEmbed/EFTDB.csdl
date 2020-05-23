@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EFTDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Ammunition">
+    <Key>
+      <PropertyRef Name="AmmunitionID" />
+    </Key>
+    <Property Name="AmmunitionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Damage" Type="Int32" Nullable="false" />
+    <Property Name="Penetration" Type="Int32" Nullable="false" />
+    <Property Name="ArmourDamage" Type="Int32" Nullable="false" />
+    <Property Name="Accuracy" Type="Int32" Nullable="false" />
+    <Property Name="Recoil" Type="Int32" Nullable="false" />
+    <Property Name="FragmentationChance" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="RicochetChance" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Speed" Type="Int32" Nullable="false" />
+    <Property Name="CaliberID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Caliber" Relationship="Self.FK_Ammunition_Caliber" FromRole="Ammunition" ToRole="Caliber" />
+  </EntityType>
+  <EntityType Name="Caliber">
+    <Key>
+      <PropertyRef Name="CaliberID" />
+    </Key>
+    <Property Name="CaliberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Ammunitions" Relationship="Self.FK_Ammunition_Caliber" FromRole="Caliber" ToRole="Ammunition" />
+    <NavigationProperty Name="Weapons" Relationship="Self.FK_Weapon_Caliber" FromRole="Caliber" ToRole="Weapon" />
+  </EntityType>
+  <EntityType Name="Gear">
+    <Key>
+      <PropertyRef Name="GearID" />
+    </Key>
+    <Property Name="GearID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Slot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Weight" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="Material" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Class" Type="Int32" />
+    <Property Name="Durability" Type="Int32" />
+    <Property Name="Slots" Type="Int32" />
+    <Property Name="MovementSpeed" Type="Int32" />
+    <Property Name="TurnSpeed" Type="Int32" />
+    <Property Name="Ergonomics" Type="Int32" />
+    <Property Name="RicochetChance" Type="Double" />
+    <Property Name="SoundReduction" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="BlocksEarpiece" Type="Boolean" />
+    <Property Name="BlocksEyewear" Type="Boolean" />
+    <Property Name="BlocksFaceCover" Type="Boolean" />
+    <Property Name="BlocksHeadwear" Type="Boolean" />
+    <Property Name="BlocksArmour" Type="Boolean" />
+    <NavigationProperty Name="Loadouts" Relationship="Self.FK_Loadout_Gear_Backpack" FromRole="Gear" ToRole="Loadout" />
+    <NavigationProperty Name="Loadouts1" Relationship="Self.FK_Loadout_Gear_BodyArmour" FromRole="Gear" ToRole="Loadout" />
+    <NavigationProperty Name="Loadouts2" Relationship="Self.FK_Loadout_Gear_Earpiece" FromRole="Gear" ToRole="Loadout" />
+    <NavigationProperty Name="Loadouts3" Relationship="Self.FK_Loadout_Gear_Headwear" FromRole="Gear" ToRole="Loadout" />
+    <NavigationProperty Name="Loadouts4" Relationship="Self.FK_Loadout_Gear_Rig" FromRole="Gear" ToRole="Loadout" />
+  </EntityType>
+  <EntityType Name="Loadout">
+    <Key>
+      <PropertyRef Name="LoadoutID" />
+    </Key>
+    <Property Name="LoadoutID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="EarpieceID" Type="Int32" />
+    <Property Name="HeadwearID" Type="Int32" />
+    <Property Name="BodyArmourID" Type="Int32" />
+    <Property Name="PrimaryWeaponID" Type="Int32" />
+    <Property Name="SecondaryWeaponID" Type="Int32" />
+    <Property Name="HolsterWeaponID" Type="Int32" />
+    <Property Name="RigID" Type="Int32" />
+    <Property Name="BackpackID" Type="Int32" />
+    <NavigationProperty Name="Gear" Relationship="Self.FK_Loadout_Gear_Backpack" FromRole="Loadout" ToRole="Gear" />
+    <NavigationProperty Name="Gear1" Relationship="Self.FK_Loadout_Gear_BodyArmour" FromRole="Loadout" ToRole="Gear" />
+    <NavigationProperty Name="Gear2" Relationship="Self.FK_Loadout_Gear_Earpiece" FromRole="Loadout" ToRole="Gear" />
+    <NavigationProperty Name="Gear3" Relationship="Self.FK_Loadout_Gear_Headwear" FromRole="Loadout" ToRole="Gear" />
+    <NavigationProperty Name="Gear4" Relationship="Self.FK_Loadout_Gear_Rig" FromRole="Loadout" ToRole="Gear" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Loadout_User" FromRole="Loadout" ToRole="User" />
+    <NavigationProperty Name="Weapon" Relationship="Self.FK_Loadout_Weapon_Holster" FromRole="Loadout" ToRole="Weapon" />
+    <NavigationProperty Name="Weapon1" Relationship="Self.FK_Loadout_Weapon_Primary" FromRole="Loadout" ToRole="Weapon" />
+    <NavigationProperty Name="Weapon2" Relationship="Self.FK_Loadout_Weapon_Secondary" FromRole="Loadout" ToRole="Weapon" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Admin" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Loadouts" Relationship="Self.FK_Loadout_User" FromRole="User" ToRole="Loadout" />
+  </EntityType>
+  <EntityType Name="Weapon">
+    <Key>
+      <PropertyRef Name="WeaponID" />
+    </Key>
+    <Property Name="WeaponID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Slot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Weight" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="VerticalRecoil" Type="Int32" Nullable="false" />
+    <Property Name="HorizontalRecoil" Type="Int32" Nullable="false" />
+    <Property Name="Range" Type="Int32" Nullable="false" />
+    <Property Name="Ergonomics" Type="Int32" Nullable="false" />
+    <Property Name="FireRate" Type="Int32" Nullable="false" />
+    <Property Name="Single" Type="Boolean" Nullable="false" />
+    <Property Name="Burst" Type="Boolean" Nullable="false" />
+    <Property Name="Auto" Type="Boolean" Nullable="false" />
+    <Property Name="CaliberID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Caliber" Relationship="Self.FK_Weapon_Caliber" FromRole="Weapon" ToRole="Caliber" />
+    <NavigationProperty Name="Loadouts" Relationship="Self.FK_Loadout_Weapon_Holster" FromRole="Weapon" ToRole="Loadout" />
+    <NavigationProperty Name="Loadouts1" Relationship="Self.FK_Loadout_Weapon_Primary" FromRole="Weapon" ToRole="Loadout" />
+    <NavigationProperty Name="Loadouts2" Relationship="Self.FK_Loadout_Weapon_Secondary" FromRole="Weapon" ToRole="Loadout" />
+  </EntityType>
+  <Association Name="FK_Ammunition_Caliber">
+    <End Role="Caliber" Type="Self.Caliber" Multiplicity="1" />
+    <End Role="Ammunition" Type="Self.Ammunition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Caliber">
+        <PropertyRef Name="CaliberID" />
+      </Principal>
+      <Dependent Role="Ammunition">
+        <PropertyRef Name="CaliberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Weapon_Caliber">
+    <End Role="Caliber" Type="Self.Caliber" Multiplicity="1" />
+    <End Role="Weapon" Type="Self.Weapon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Caliber">
+        <PropertyRef Name="CaliberID" />
+      </Principal>
+      <Dependent Role="Weapon">
+        <PropertyRef Name="CaliberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Loadout_Gear_Backpack">
+    <End Role="Gear" Type="Self.Gear" Multiplicity="0..1" />
+    <End Role="Loadout" Type="Self.Loadout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gear">
+        <PropertyRef Name="GearID" />
+      </Principal>
+      <Dependent Role="Loadout">
+        <PropertyRef Name="BackpackID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Loadout_Gear_BodyArmour">
+    <End Role="Gear" Type="Self.Gear" Multiplicity="0..1" />
+    <End Role="Loadout" Type="Self.Loadout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gear">
+        <PropertyRef Name="GearID" />
+      </Principal>
+      <Dependent Role="Loadout">
+        <PropertyRef Name="BodyArmourID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Loadout_Gear_Earpiece">
+    <End Role="Gear" Type="Self.Gear" Multiplicity="0..1" />
+    <End Role="Loadout" Type="Self.Loadout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gear">
+        <PropertyRef Name="GearID" />
+      </Principal>
+      <Dependent Role="Loadout">
+        <PropertyRef Name="EarpieceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Loadout_Gear_Headwear">
+    <End Role="Gear" Type="Self.Gear" Multiplicity="0..1" />
+    <End Role="Loadout" Type="Self.Loadout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gear">
+        <PropertyRef Name="GearID" />
+      </Principal>
+      <Dependent Role="Loadout">
+        <PropertyRef Name="HeadwearID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Loadout_Gear_Rig">
+    <End Role="Gear" Type="Self.Gear" Multiplicity="0..1" />
+    <End Role="Loadout" Type="Self.Loadout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gear">
+        <PropertyRef Name="GearID" />
+      </Principal>
+      <Dependent Role="Loadout">
+        <PropertyRef Name="RigID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Loadout_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Loadout" Type="Self.Loadout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Loadout">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Loadout_Weapon_Holster">
+    <End Role="Weapon" Type="Self.Weapon" Multiplicity="0..1" />
+    <End Role="Loadout" Type="Self.Loadout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Weapon">
+        <PropertyRef Name="WeaponID" />
+      </Principal>
+      <Dependent Role="Loadout">
+        <PropertyRef Name="HolsterWeaponID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Loadout_Weapon_Primary">
+    <End Role="Weapon" Type="Self.Weapon" Multiplicity="0..1" />
+    <End Role="Loadout" Type="Self.Loadout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Weapon">
+        <PropertyRef Name="WeaponID" />
+      </Principal>
+      <Dependent Role="Loadout">
+        <PropertyRef Name="PrimaryWeaponID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Loadout_Weapon_Secondary">
+    <End Role="Weapon" Type="Self.Weapon" Multiplicity="0..1" />
+    <End Role="Loadout" Type="Self.Loadout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Weapon">
+        <PropertyRef Name="WeaponID" />
+      </Principal>
+      <Dependent Role="Loadout">
+        <PropertyRef Name="SecondaryWeaponID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EFTDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Ammunitions" EntityType="Self.Ammunition" />
+    <EntitySet Name="Calibers" EntityType="Self.Caliber" />
+    <EntitySet Name="Gears" EntityType="Self.Gear" />
+    <EntitySet Name="Loadouts" EntityType="Self.Loadout" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Weapons" EntityType="Self.Weapon" />
+    <AssociationSet Name="FK_Ammunition_Caliber" Association="Self.FK_Ammunition_Caliber">
+      <End Role="Caliber" EntitySet="Calibers" />
+      <End Role="Ammunition" EntitySet="Ammunitions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Weapon_Caliber" Association="Self.FK_Weapon_Caliber">
+      <End Role="Caliber" EntitySet="Calibers" />
+      <End Role="Weapon" EntitySet="Weapons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Loadout_Gear_Backpack" Association="Self.FK_Loadout_Gear_Backpack">
+      <End Role="Gear" EntitySet="Gears" />
+      <End Role="Loadout" EntitySet="Loadouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Loadout_Gear_BodyArmour" Association="Self.FK_Loadout_Gear_BodyArmour">
+      <End Role="Gear" EntitySet="Gears" />
+      <End Role="Loadout" EntitySet="Loadouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Loadout_Gear_Earpiece" Association="Self.FK_Loadout_Gear_Earpiece">
+      <End Role="Gear" EntitySet="Gears" />
+      <End Role="Loadout" EntitySet="Loadouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Loadout_Gear_Headwear" Association="Self.FK_Loadout_Gear_Headwear">
+      <End Role="Gear" EntitySet="Gears" />
+      <End Role="Loadout" EntitySet="Loadouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Loadout_Gear_Rig" Association="Self.FK_Loadout_Gear_Rig">
+      <End Role="Gear" EntitySet="Gears" />
+      <End Role="Loadout" EntitySet="Loadouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Loadout_User" Association="Self.FK_Loadout_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Loadout" EntitySet="Loadouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Loadout_Weapon_Holster" Association="Self.FK_Loadout_Weapon_Holster">
+      <End Role="Weapon" EntitySet="Weapons" />
+      <End Role="Loadout" EntitySet="Loadouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Loadout_Weapon_Primary" Association="Self.FK_Loadout_Weapon_Primary">
+      <End Role="Weapon" EntitySet="Weapons" />
+      <End Role="Loadout" EntitySet="Loadouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Loadout_Weapon_Secondary" Association="Self.FK_Loadout_Weapon_Secondary">
+      <End Role="Weapon" EntitySet="Weapons" />
+      <End Role="Loadout" EntitySet="Loadouts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

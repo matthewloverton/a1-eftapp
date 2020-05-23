@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EFTDBModelStoreContainer" CdmEntityContainer="EFTDBEntities">
+    <EntitySetMapping Name="Ammunitions">
+      <EntityTypeMapping TypeName="EFTDBModel.Ammunition">
+        <MappingFragment StoreEntitySet="Ammunition">
+          <ScalarProperty Name="AmmunitionID" ColumnName="AmmunitionID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Damage" ColumnName="Damage" />
+          <ScalarProperty Name="Penetration" ColumnName="Penetration" />
+          <ScalarProperty Name="ArmourDamage" ColumnName="ArmourDamage" />
+          <ScalarProperty Name="Accuracy" ColumnName="Accuracy" />
+          <ScalarProperty Name="Recoil" ColumnName="Recoil" />
+          <ScalarProperty Name="FragmentationChance" ColumnName="FragmentationChance" />
+          <ScalarProperty Name="RicochetChance" ColumnName="RicochetChance" />
+          <ScalarProperty Name="Speed" ColumnName="Speed" />
+          <ScalarProperty Name="CaliberID" ColumnName="CaliberID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Calibers">
+      <EntityTypeMapping TypeName="EFTDBModel.Caliber">
+        <MappingFragment StoreEntitySet="Caliber">
+          <ScalarProperty Name="CaliberID" ColumnName="CaliberID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gears">
+      <EntityTypeMapping TypeName="EFTDBModel.Gear">
+        <MappingFragment StoreEntitySet="Gear">
+          <ScalarProperty Name="GearID" ColumnName="GearID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Slot" ColumnName="Slot" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Material" ColumnName="Material" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Durability" ColumnName="Durability" />
+          <ScalarProperty Name="Slots" ColumnName="Slots" />
+          <ScalarProperty Name="MovementSpeed" ColumnName="MovementSpeed" />
+          <ScalarProperty Name="TurnSpeed" ColumnName="TurnSpeed" />
+          <ScalarProperty Name="Ergonomics" ColumnName="Ergonomics" />
+          <ScalarProperty Name="RicochetChance" ColumnName="RicochetChance" />
+          <ScalarProperty Name="SoundReduction" ColumnName="SoundReduction" />
+          <ScalarProperty Name="BlocksEarpiece" ColumnName="BlocksEarpiece" />
+          <ScalarProperty Name="BlocksEyewear" ColumnName="BlocksEyewear" />
+          <ScalarProperty Name="BlocksFaceCover" ColumnName="BlocksFaceCover" />
+          <ScalarProperty Name="BlocksHeadwear" ColumnName="BlocksHeadwear" />
+          <ScalarProperty Name="BlocksArmour" ColumnName="BlocksArmour" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loadouts">
+      <EntityTypeMapping TypeName="EFTDBModel.Loadout">
+        <MappingFragment StoreEntitySet="Loadout">
+          <ScalarProperty Name="LoadoutID" ColumnName="LoadoutID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="EarpieceID" ColumnName="EarpieceID" />
+          <ScalarProperty Name="HeadwearID" ColumnName="HeadwearID" />
+          <ScalarProperty Name="BodyArmourID" ColumnName="BodyArmourID" />
+          <ScalarProperty Name="PrimaryWeaponID" ColumnName="PrimaryWeaponID" />
+          <ScalarProperty Name="SecondaryWeaponID" ColumnName="SecondaryWeaponID" />
+          <ScalarProperty Name="HolsterWeaponID" ColumnName="HolsterWeaponID" />
+          <ScalarProperty Name="RigID" ColumnName="RigID" />
+          <ScalarProperty Name="BackpackID" ColumnName="BackpackID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="EFTDBModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Weapons">
+      <EntityTypeMapping TypeName="EFTDBModel.Weapon">
+        <MappingFragment StoreEntitySet="Weapon">
+          <ScalarProperty Name="WeaponID" ColumnName="WeaponID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Slot" ColumnName="Slot" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="VerticalRecoil" ColumnName="VerticalRecoil" />
+          <ScalarProperty Name="HorizontalRecoil" ColumnName="HorizontalRecoil" />
+          <ScalarProperty Name="Range" ColumnName="Range" />
+          <ScalarProperty Name="Ergonomics" ColumnName="Ergonomics" />
+          <ScalarProperty Name="FireRate" ColumnName="FireRate" />
+          <ScalarProperty Name="Single" ColumnName="Single" />
+          <ScalarProperty Name="Burst" ColumnName="Burst" />
+          <ScalarProperty Name="Auto" ColumnName="Auto" />
+          <ScalarProperty Name="CaliberID" ColumnName="CaliberID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
